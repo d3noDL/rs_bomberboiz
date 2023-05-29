@@ -1,3 +1,5 @@
+extern crate bmp;
+extern crate text_io;
 use rs_test::arena::arena::Arena;
 use rs_test::player::player::Player;
 use text_io::*;
@@ -21,17 +23,14 @@ fn main() {
         })
     }
 
-    print!("Please enter the arena size: ");
-    let arena_size: usize = read!();
-
     let arena: Arena = Arena {
-        width: arena_size,
-        height: arena_size,
+        width: 15,
+        height: 15,
         floor: ' ',
         walls: ' ',
     };
 
-    Arena::draw_arena(arena);
+    Arena::set_arena(arena);
 
     update();
     draw();
