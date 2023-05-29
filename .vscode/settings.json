@@ -1,0 +1,5 @@
+{
+    "cmake.configureOnOpen": false,
+    "rust-analyzer.check.command": "check",
+    "rust-analyzer.showUnlinkedFileNotification": false
+}
