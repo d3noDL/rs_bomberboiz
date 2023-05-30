@@ -1,7 +1,6 @@
 pub mod player {
     pub struct Player {
         pub name: String,
-        pub character: char,
         pub position_x: usize,
         pub position_y: usize,
     }
