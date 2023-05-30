@@ -1,19 +1,13 @@
 extern crate bmp;
 extern crate text_io;
 
-use rs_test::arena::arena::Arena;
+use rs_test::arena::*;
 use rs_test::player::player::Player;
 use text_io::*;
 
 fn main() {
     clear();
     let mut players: Vec<Player> = Vec::new();
-    let arena: Arena = Arena {
-        width: 15,
-        height: 15,
-        floor: " ".to_string(),
-        walls: " ".to_string(),
-    };
     clear();
     print!("Enter the number of players: ");
     let player_count: usize = read!();
@@ -30,13 +24,14 @@ fn main() {
         })
     }
     clear();
-    Arena::set_arena(arena);
+    let arena_matrix = arena::build_arena();
 
     'update: loop {
         break 'update;
     }
 
     'draw: loop {
+        arena::update_arena(arena_matrix);
         break 'draw;
     }
 }
