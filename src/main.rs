@@ -5,15 +5,25 @@ use rs_test::player::player::Player;
 use text_io::*;
 
 fn main() {
+    clear();
     let mut players: Vec<Player> = Vec::new();
-
+    let arena: Arena = Arena {
+        width: 15,
+        height: 15,
+        floor: " ".to_string(),
+        walls: " ".to_string(),
+    };
+    clear();
     print!("Enter the number of players: ");
     let player_count: usize = read!();
+    clear();
     for i in 0..player_count {
-        println!("Enter the name for Player {}", i + 1);
+        print!("Enter the name for Player {}: ", i + 1);
         let p_name: String = read!();
-        println!("Pick a character for {}", p_name);
+        clear();
+        print!("Pick a character for {}: ", p_name);
         let p_char: char = read!();
+        clear();
 
         players.push(Player {
             name: p_name,
@@ -22,14 +32,7 @@ fn main() {
             position_y: 0,
         })
     }
-
-    let arena: Arena = Arena {
-        width: 15,
-        height: 15,
-        floor: ' ',
-        walls: ' ',
-    };
-
+    clear();
     Arena::set_arena(arena);
 
     update();
@@ -46,4 +49,8 @@ fn draw() {
     loop {
         break;
     }
+}
+
+fn clear() {
+    print!("{esc}[2J{esc}[1;1H", esc = 27 as char);
 }
