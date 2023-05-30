@@ -12,7 +12,7 @@ pub mod player {
     }
 
     impl Player {
-        pub fn move_in_direction(&mut self, direction: Direction) {
+        pub fn move_to(&mut self, direction: Direction) {
             match direction {
                 Direction::Up => self.position_y -= 1,
                 Direction::Down => self.position_y += 1,

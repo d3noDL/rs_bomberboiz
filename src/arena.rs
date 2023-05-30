@@ -4,23 +4,11 @@ pub mod arena {
     use nalgebra::*;
 
     pub struct Arena {
-        pub matrix: Matrix<String, Dynamic, Dynamic, VecStorage<String, Dynamic, Dynamic>>,
+        pub matrix: Matrix<String, Dyn, Dyn, VecStorage<String, Dyn, Dyn>>,
     }
 
-    pub trait Init {
-        fn init(&self);
-    }
-
-    pub trait Update {
-        fn update(&self);
-    }
-
-    pub trait Build {
-        fn build(&mut self);
-    }
-
-    impl Build for Arena {
-        fn build(&mut self) {
+    impl Arena {
+        pub fn build(&mut self) {
             let map = bmp::open("img/0.bmp").unwrap();
             self.matrix = DMatrix::from_element(15, 15, " ".to_string());
 
@@ -39,10 +27,7 @@ pub mod arena {
                 }
             }
         }
-    }
-
-    impl Update for Arena {
-        fn update(&self) {
+        pub fn update(&self) {
             let mut pos = 0;
             for i in self.matrix.iter() {
                 if pos < 15 - 1 {
